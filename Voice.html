@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-Based To-Do List</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            padding: 50px;
+        }
+        #todo-list {
+            list-style: none;
+            padding: 0;
+        }
+        #todo-list li {
+            background: #333;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Voice-Based To-Do List</h2>
+    <button id="start-button">Start Voice Input</button>
+    <ul id="todo-list"></ul>
+
+    <script>
+        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = false;
+        recognition.lang = 'en-US';
+
+        $('#start-button').click(function() {
+            recognition.start();
+        });
+
+        recognition.onresult = function(event) {
+            var text = event.results[0][0].transcript;
+            $('#todo-list').append('<li>' + text + '</li>');
+        };
+    </script>
+</body>
+</html>

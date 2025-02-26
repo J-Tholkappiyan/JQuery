@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic 3 Operations</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2> Arithmetic 3 operations using jquery</h2>
+    F.Value : <input type="number" id="fv" value="0" required/></br>
+    S.Value : <input type="number" id="sv" value="0" required/></br>
+    T.Value : <input type="number" id="tv" value="0" required/></br>
+    operation :<select id="op" ><option>Add</option><option>Sub</option><option>Mul</option></select></br>
+    Answer  : <input type="text" id="ans" readonly="true"/>
+    <script>
+        $("select").change(function(){
+            switch($("select").val())
+            {
+            case 'Add': $("#ans").val(parseInt($("#fv").val())+parseInt($("#sv").val())+ parseInt($("#tv").val()));
+            break;
+            case 'Mul': $("#ans").val(parseInt($("#fv").val())* parseInt($("#sv").val())*parseInt($("#tv").val()));
+            break;
+            case 'Sub':   $("#ans").val(parseInt($("#fv").val())-parseInt($("#sv").val())-parseInt($("#tv").val()));
+            break;
+            }
+        });
+        $("#fv, #sv").on('input', function() {
+    if ($(this).val() > 100) {
+        $(this).val('');  // Clear the input
+        alert('Range only 0 to 100');
+    } else if ($(this).val() < 0) {
+        $(this).val('');  // Clear the input
+        alert('Range only 0 to 100');
+    }
+});
+
+      
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive DNA Helix</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .dna-container {
+            position: relative;
+            width: 200px;
+            height: 400px;
+        }
+        .strand {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: cyan;
+            border-radius: 50%;
+            box-shadow: 0 0 10px cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="dna-container"></div>
+    <script>
+        $(document).ready(function() {
+            let container = $('.dna-container');
+            let numDots = 20;
+            let angle = 0;
+            for (let i = 0; i < numDots; i++) {
+                let dot = $('<div class="strand"></div>');
+                container.append(dot);
+            }
+            function animateHelix() {
+                $('.strand').each(function(index) {
+                    let x = Math.sin(angle + index * 0.4) * 60 + 100;
+                    let y = index * 20;
+                    $(this).css({ left: x + 'px', top: y + 'px' });
+                });
+                angle += 0.1;
+                requestAnimationFrame(animateHelix);
+            }
+            animateHelix();
+        });
+    </script>
+</body>
+</html>

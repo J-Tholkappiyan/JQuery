@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <select id="operation">
+        <option value="Total">Total</option>
+    </select>
+    
+    <input type="number" id="fv" value="10">
+    <input type="number" id="sv" value="20">
+    <input type="number" id="tv" value="30">
+    <input type="number" id="frv" value="40">
+    <input type="number" id="ffv" value="50">
+    
+    <input type="text" id="ans" readonly>
+    <button id="calculate">Calculate</button>
+    
+    <div class="mt-3 col-lg-12 col-md-4 col-sm-12">
+        <p class="row-cols-1"><button id="cal1">Calculate Total</button></p>
+        <p>Total: <span id="total"></span></p>
+    </div>
+    <div class="mt-3 col-lg-12 col-md-4 col-sm-12">
+        <p class="row-cols-1"><button id="cal2">Calculate Average</button></p>
+        <p>Average: <span id="average"></span></p>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $('#calculate, #cal1').click(function() {
+                var total = parseInt($("#fv").val()) + parseInt($("#sv").val()) + 
+                            parseInt($("#tv").val()) + parseInt($("#frv").val()) + 
+                            parseInt($("#ffv").val());
+                $("#ans, #total").text(total);
+            });
+            
+            $('#cal2').click(function() {
+                var val1 = parseFloat($('#fv').val());
+                var val2 = parseFloat($('#sv').val());
+                var val3 = parseFloat($('#tv').val());
+                var val4 = parseFloat($('#frv').val());
+                var val5 = parseFloat($('#ffv').val());
+                
+                var sum = val1 + val2 + val3 + val4 + val5;
+                var average = sum / 5;
+                $('#average').text(average);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple 3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>
+        <p>Enter the Mark for Subject 1:<input type="number" id="val1"  required/></p>
+    </div>
+    <div>
+        <p >Enter the Mark for Subject 2:<input type="number" id="val2" required/></p>
+    </div>
+    <div>
+        <p>Enter the Mark for Subject 3:<input type="number" id="val3"  required/></p>
+    </div>
+    <script>
+        $("#val1").on('input', function() {
+        if ($(this).val() > 100) {$(this).val('');
+        alert('Range only 0 to 100');} 
+        else if ($(this).val() < 0) {$(this).val('');}
+    });
+        $("#val2").on('input', function() {
+        if ($(this).val() > 100) {$(this).val('');
+        alert('Range only 0 to 100');} 
+        else if ($(this).val() < 0) {$(this).val('');}
+    });
+        $("#val3").on('input', function() {
+        if ($(this).val() > 100) {$(this).val('');
+        alert('Range only 0 to 100');} 
+        else if ($(this).val() < 0) {$(this).val('');}
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma Code Encryptor</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+            background: black;
+            color: lime;
+            border: 1px solid #00ff00;
+            padding: 10px;
+        }
+        button {
+            margin-top: 10px;
+            background: #00ff00;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .output {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enigma Code Encryptor</h2>
+    <textarea id="inputText" placeholder="Enter text to encrypt..."></textarea>
+    <button onclick="encryptText()">Encrypt</button>
+    <div class="output" id="outputText"></div>
+
+    <script>
+        function encryptText() {
+            let input = $('#inputText').val();
+            let encrypted = input.split('').map(char => String.fromCharCode(char.charCodeAt(0) + 3)).join('');
+            $('#outputText').text('Encrypted: ' + encrypted);
+        }
+    </script>
+</body>
+</html>
